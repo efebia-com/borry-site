@@ -162,6 +162,20 @@ footer{padding:26px 0;color:var(--muted);font-size:14px;text-align:center;backgr
 }
 @media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}.btn:hover{transform:none}}
 </style>
+<script src="https://cdn.mxpnl.com/libs/mixpanel-2-latest.min.js"></script>
+<script>
+  if (window.mixpanel) {
+    mixpanel.init("369d112c746391c0709906a5f5f9e57a", {api_host: "https://api-eu.mixpanel.com", track_pageview: true, autocapture: true, record_sessions_percent: 100});
+    mixpanel.register({site: "borry-landing"});
+    document.addEventListener("DOMContentLoaded", function () {
+      var v = document.querySelector("video");
+      if (v) {
+        v.addEventListener("play", function () { mixpanel.track("Demo video play", {at_s: Math.round(v.currentTime)}); });
+        v.addEventListener("ended", function () { mixpanel.track("Demo video ended"); });
+      }
+    });
+  }
+</script>
 </head>
 <body>
 
